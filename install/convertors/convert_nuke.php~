@@ -130,7 +130,7 @@ $config_schema = array(
 		'board_timezone'		=> 'board_timezone',
 		'allow_privmsg'			=> 'not(privmsg_disable)',
 		'gzip_compress'			=> 'gzip_compress',
-		'coppa_enable'			=> '!is_empty(coppa_mail)',
+		'coppa_enable'			=> 'is_empty(coppa_mail)',
 		'coppa_fax'				=> 'coppa_fax',
 		'coppa_mail'			=> 'coppa_mail',
 		'record_online_users'	=> 'record_online_users',
@@ -433,8 +433,6 @@ if (!$get_info)
 				array('topic_moved_id',			'bbtopics.topic_moved_id',			''),
 				array('topic_type',				'bbtopics.topic_type',				'phpbb_convert_topic_type'),
 				array('topic_first_post_id',	'bbtopics.topic_first_post_id',		''),
-				array('topic_last_view_time',	'posts.post_time',					'intval'),
-
 
 				array('poll_title',				'bbvote_desc.vote_text',				array('function1' => 'null_to_str', 'function2' => 'phpbb_set_encoding', 'function3' => 'utf8_htmlspecialchars')),
 				array('poll_start',				'bbvote_desc.vote_start',				'null_to_zero'),
@@ -442,10 +440,7 @@ if (!$get_info)
 				array('poll_max_options',		1,									''),
 				array('poll_vote_change',		0,									''),
 
-								'left_join'		=>	array('topics LEFT JOIN vote_desc ON topics.topic_id = vote_desc.topic_id AND topics.topic_vote = 1', 
-																				'topics LEFT JOIN posts ON topics.topic_last_post_id = posts.post_id',
-								),
-
+				'left_join'		=> 'bbtopics LEFT JOIN bbvote_desc ON bbtopics.topic_id = bbvote_desc.topic_id AND bbtopics.topic_vote = 1',
 				'where'			=> 'bbtopics.topic_moved_id <> 0',
 			),
 
@@ -522,7 +517,6 @@ if (!$get_info)
 				'query_first'	=> array('target', $convert->truncate_statement . POSTS_TABLE),
 				'execute_first'	=> '
 					$config["max_post_chars"] = 0;
-					$config["min_post_chars"] = 0;
 					$config["max_quote_depth"] = 0;
 				',
 
@@ -566,7 +560,6 @@ if (!$get_info)
 
 				'execute_first'	=> '
 					$config["max_post_chars"] = 0;
-					$config["min_post_chars"] = 0;
 					$config["max_quote_depth"] = 0;
 				',
 
