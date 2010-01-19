@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version 1.0
+* @version 1.1
 * @copyright (c) 2010 Vojtìch Vondra / ameeck
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -32,7 +32,7 @@ unset($dbpasswd);
 */
 $convertor_data = array(
 	'forum_name'	=> 'Universal *-NUKE CMS',
-	'version'		=> '1.0',
+	'version'		=> '1.1',
 	'phpbb_version'	=> '3.0.6',
 	'author'		=> '<a href="http://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=174373">ameeck</a>',
 	'dbms'			=> $dbms,
@@ -409,7 +409,9 @@ if (!$get_info)
 				array('poll_max_options',		1,									''),
 				array('poll_vote_change',		0,									''),
 
-				'left_join'		=> 'bbtopics LEFT JOIN bbvote_desc ON bbtopics.topic_id = bbvote_desc.topic_id AND bbtopics.topic_vote = 1',
+				'left_join'		=>	array (	'bbtopics LEFT JOIN bbvote_desc ON bbtopics.topic_id = bbvote_desc.topic_id AND bbtopics.topic_vote = 1',
+											'bbtopics LEFT JOIN bbposts ON bbtopics.topic_last_post_id = bbposts.post_id',
+									),
 				'where'			=> 'bbtopics.topic_moved_id = 0',
 			),
 
@@ -442,10 +444,7 @@ if (!$get_info)
 				array('poll_max_options',		1,									''),
 				array('poll_vote_change',		0,									''),
 
-								'left_join'		=>	array('topics LEFT JOIN vote_desc ON topics.topic_id = vote_desc.topic_id AND topics.topic_vote = 1', 
-																				'topics LEFT JOIN posts ON topics.topic_last_post_id = posts.post_id',
-								),
-
+				'left_join'		=> 'bbtopics LEFT JOIN bbvote_desc ON bbtopics.topic_id = bbvote_desc.topic_id AND bbtopics.topic_vote = 1',
 				'where'			=> 'bbtopics.topic_moved_id <> 0',
 			),
 
@@ -772,7 +771,7 @@ if (!$get_info)
 				array('user_regdate',			'users.user_regdate',				'phpbb_regdate_timestamp'),
 				array('username',				'users.username',					'phpbb_set_default_encoding'), // recode to utf8 with default lang
 				array('username_clean',			'users.username',					array('function1' => 'phpbb_set_default_encoding', 'function2' => 'utf8_clean_string')),
-				array('user_password',			'users.user_password',				''),
+				array('user_password',			'users.user_password',				'phpbb_hash'),
 				array('user_pass_convert',		1,									''),
 				array('user_posts',				'users.user_posts',					'intval'),
 				array('user_email',				'users.user_email',					'strtolower'),
