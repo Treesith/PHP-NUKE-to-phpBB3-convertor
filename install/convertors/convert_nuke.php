@@ -435,7 +435,7 @@ if (!$get_info)
 				array('topic_moved_id',			'bbtopics.topic_moved_id',			''),
 				array('topic_type',				'bbtopics.topic_type',				'phpbb_convert_topic_type'),
 				array('topic_first_post_id',	'bbtopics.topic_first_post_id',		''),
-				array('topic_last_view_time',	'posts.post_time',					'intval'),
+				array('topic_last_view_time',	'bbposts.post_time',					'intval'),
 
 
 				array('poll_title',				'bbvote_desc.vote_text',				array('function1' => 'null_to_str', 'function2' => 'phpbb_set_encoding', 'function3' => 'utf8_htmlspecialchars')),
