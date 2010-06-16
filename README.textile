@@ -16,4 +16,4 @@ PHP-NUKE Clan 4.2.0
 
 h2. Download
 
-"Download from github":http://github.com/ameeck/PHP-NUKE-to-phpBB3-convertor/downloads
+"Download from github":http://github.com/vvondra/PHP-NUKE-to-phpBB3-convertor/downloads
