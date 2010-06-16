@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version 1.0
+* @version 1.2
 * @copyright (c) 2010 Vojtìch Vondra / ameeck
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -1880,6 +1880,9 @@ function phpbb_strip_module_path($path)
 
 /**
 * Converter wrapper for html_entity_decode
+*
+* @param string $string 
+* @return string
 */
 function phpbb_entity_decode($string)
 {

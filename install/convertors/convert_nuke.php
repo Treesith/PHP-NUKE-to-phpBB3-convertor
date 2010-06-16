@@ -2,7 +2,7 @@
 /**
 *
 * @package install
-* @version 1.1
+* @version 1.2
 * @copyright (c) 2010 Vojtìch Vondra / ameeck
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
@@ -10,12 +10,6 @@
 */
 
 /**
-* NOTE to potential convertor authors. Please use this file to get
-* familiar with the structure since we added some bare explanations here.
-*
-* Since this file gets included more than once on one page you are not able to add functions to it.
-* Instead use a functions_ file.
-*
 * @ignore
 */
 if (!defined('IN_PHPBB'))
@@ -32,8 +26,8 @@ unset($dbpasswd);
 */
 $convertor_data = array(
 	'forum_name'	=> 'Universal *-NUKE CMS',
-	'version'		=> '1.1',
-	'phpbb_version'	=> '3.0.6',
+	'version'		=> '1.2',
+	'phpbb_version'	=> '3.0.7-PL1',
 	'author'		=> '<a href="http://www.phpbb.com/community/memberlist.php?mode=viewprofile&u=174373">ameeck</a>',
 	'dbms'			=> $dbms,
 	'dbhost'		=> $dbhost,
