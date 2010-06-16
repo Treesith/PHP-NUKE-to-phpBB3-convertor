@@ -1,0 +1,19 @@
+## How to use
+
+Download the archive, unpack it, and upload the contents to your conversion installation (phpBB3), you should have two more files in the install/convertors/ directory at the end. Then run the conversion as normally(click the Convert tab on the installation screen), but select this convertor from the list.
+
+## Table prefix
+
+don't include the "bb" in the prefix, use the same prefix as set in the NUKE config.php (just add an underscore - "_")
+Former board path: Set it to the phpBB root, not the NUKE root, it is probably going to end with modules/Forums/
+
+## Tested on these systems
+
+UNITED-NUKE 4.2.08ms2
+PHP-NUKE 7.9
+Nuke-Evolution Basic - 2.0.5
+PHP-NUKE Clan 4.2.0
+
+## Download
+
+[Download from github](http://github.com/ameeck/PHP-NUKE-to-phpBB3-convertor/downloads)
